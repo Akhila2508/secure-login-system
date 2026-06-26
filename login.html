@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+  <h1>You're logged in 🎉</h1>
+  <p class="sub">Welcome, <strong>{{ username }}</strong>. This page only loads if your session is valid.</p>
+
+  <a href="{{ url_for('logout') }}">
+    <button type="button">Log Out</button>
+  </a>
+{% endblock %}
