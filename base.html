@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}Secure Login System{% endblock %}</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f8;
+    display: flex;
+    justify-content: center;
+    padding: 60px 20px;
+    margin: 0;
+  }
+  .box {
+    background: #ffffff;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 380px;
+  }
+  h1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+    color: #222;
+  }
+  p.sub {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  label {
+    display: block;
+    font-size: 13px;
+    color: #444;
+    margin-bottom: 4px;
+    margin-top: 14px;
+  }
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+  }
+  button {
+    width: 100%;
+    margin-top: 22px;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    background: #2563eb;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  button:hover { background: #1d4ed8; }
+  .link-row {
+    margin-top: 18px;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+  }
+  .link-row a { color: #2563eb; text-decoration: none; }
+  .flash {
+    background: #fff4e5;
+    border: 1px solid #f5c97b;
+    color: #8a5a00;
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+  .hint {
+    font-size: 12px;
+    color: #888;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="box">
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+        <div class="flash">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</div>
+</body>
+</html>
